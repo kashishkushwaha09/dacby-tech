@@ -1,6 +1,6 @@
 # MERN Stack Mini Project README.md
 
-````md
+
 # Hacker News Scraper MERN Application
 
 A full-stack MERN application that scrapes top stories from Hacker News and allows authenticated users to bookmark stories.
@@ -11,11 +11,11 @@ A full-stack MERN application that scrapes top stories from Hacker News and allo
 
 ### Frontend
 
-https://your-frontend.vercel.app
+[https://your-frontend.vercel.app](https://dacby-tech.vercel.app/login)
 
 ### Backend API
 
-https://dacby-tech-1.onrender.com
+[https://dacby-tech-1.onrender.com](https://dacby-tech-1.onrender.com)
 
 ---
 
@@ -74,17 +74,23 @@ https://dacby-tech-1.onrender.com
 ```text
 project/
 │
-├── frontend/
-│   ├── src/
-│   ├── public/
-│   └── package.json
-│
 ├── backend/
 │   ├── controllers/
-│   ├── routes/
+│   ├── middlewares/
 │   ├── models/
-│   ├── middleware/
-│   └── package.json
+│   ├── routes/
+│   ├── services/
+│   └── utils/
+│
+├── frontend/
+│   ├── public/
+│   └── src/
+│       ├── api/
+│       ├── assets/
+│       ├── components/
+│       ├── context/
+│       ├── pages/
+│       └── services/
 ````
 
 ---
@@ -94,14 +100,12 @@ project/
 Clone repository:
 
 ```bash
-git clone <your-github-repository-url>
+git clone https://github.com/kashishkushwaha09/dacby-tech.git
 ```
 
 Move into project folder:
 
-```bash
-cd project-name
-```
+
 
 ---
 
@@ -155,15 +159,11 @@ npm run dev
 
 ```env
 PORT=5000
-MONGO_URI=your_mongodb_connection
-JWT_SECRET=your_secret_key
+MONGO_URI=mongodb+srv://kashishkushwaha03:mHrMJ3YAyO8wNObH@cluster0.cholnji.mongodb.net/?appName=Cluster0
+JWT_SECRET=GK6L7Y6MXZlg2v1QvJmInMpcLnBWy1Xk
 ```
 
-### Frontend `.env`
 
-```env
-VITE_API_URL=https://dacby-tech-1.onrender.com/api
-```
 
 ---
 
@@ -182,7 +182,14 @@ VITE_API_URL=https://dacby-tech-1.onrender.com/api
 | ------ | ------------------------- |
 | GET    | /api/stories              |
 | GET    | /api/stories/bookmarks    |
+| GET    | /api/stories/:id          |
 | POST   | /api/stories/:id/bookmark |
+
+### Scrape
+
+| Method | Endpoint                  |
+| ------ | ------------------------- |
+| POST   | /api/scrape               |
 
 ---
 
@@ -216,4 +223,4 @@ The backend scrapes top Hacker News stories using:
 Khushboo Kachi
 
 ```
-```
+
