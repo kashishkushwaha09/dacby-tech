@@ -15,7 +15,7 @@ function App() {
       <Navbar />
     
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={  <ProtectedRoute><Home /></ProtectedRoute>} />
 
         <Route path="/login" element={<Login />} />
 
