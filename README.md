@@ -1,6 +1,3 @@
-# MERN Stack Mini Project README.md
-
-
 # Hacker News Scraper MERN Application
 
 A full-stack MERN application that scrapes top stories from Hacker News and allows authenticated users to bookmark stories.
