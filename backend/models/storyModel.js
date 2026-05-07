@@ -32,7 +32,7 @@ const storySchema = new Schema(
 
     hackerNewsId: {
       type: String,
-      unique: true,
+      unique: true,     
     },
   },
   { timestamps: true }
