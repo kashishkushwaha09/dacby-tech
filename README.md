@@ -217,7 +217,4 @@ The backend scrapes top Hacker News stories using:
 
 ## Author
 
-Khushboo Kachi
-
-```
-
+Khushboo Kachhi
