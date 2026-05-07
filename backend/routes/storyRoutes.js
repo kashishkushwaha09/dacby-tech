@@ -11,7 +11,7 @@ const {
   getBookmarks
 } = require("../controllers/storyController");
 
-router.get("/", getStories);
+router.get("/",protect, getStories);
 router.get(
   "/bookmarks",
   protect,

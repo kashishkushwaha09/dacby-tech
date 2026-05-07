@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import {
   Card,
@@ -18,7 +18,11 @@ function StoryCard({ story }) {
 
   const [bookmarked, setBookmarked] =
     useState(story.isBookmarked || false);
-
+  useEffect(() => {
+    setBookmarked(
+      story.isBookmarked || false
+    );
+  }, [story.isBookmarked]);
   const handleBookmark = async () => {
     try {
       setLoading(true);

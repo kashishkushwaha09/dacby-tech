@@ -14,11 +14,42 @@ const getStories = async (req, res) => {
       .skip(skip)
       .limit(limit);
 
-    const totalStories = await Story.countDocuments();
+    const totalStories =
+      await Story.countDocuments();
+
+    let bookmarkedIds = [];
+
+    if (req.user) {
+      const user = await User.findById(
+        req.user.id
+      );
+
+      bookmarkedIds = user.bookmarks.map(
+        (bookmarkId) =>
+          bookmarkId.toString()
+      );
+    }
+    console.log("bookmarkedIds",req.user)
+    console.log("bookmarkedIds",bookmarkedIds)
+
+    const updatedStories = stories.map(
+      (story) => ({
+        ...story.toObject(),
+
+        isBookmarked:
+          bookmarkedIds.includes(
+            story._id.toString()
+          ),
+      })
+    );
 
     res.status(200).json({
-      stories,
-      totalPages: Math.ceil(totalStories / limit),
+      stories: updatedStories,
+
+      totalPages: Math.ceil(
+        totalStories / limit
+      ),
+
       currentPage: page,
     });
   } catch (error) {
@@ -63,18 +94,29 @@ const getSingleStory = async (req, res) => {
   }
 };
 
-const toggleBookmark = async (req, res) => {
+const toggleBookmark = async (
+  req,
+  res
+) => {
   try {
-    const user = await User.findById(req.user._id);
+    const user = await User.findById(
+      req.user._id
+    );
 
     const storyId = req.params.id;
 
-    const alreadyBookmarked = user.bookmarks.includes(storyId);
+    const alreadyBookmarked =
+      user.bookmarks.some(
+        (id) =>
+          id.toString() === storyId
+      );
 
     if (alreadyBookmarked) {
-      user.bookmarks = user.bookmarks.filter(
-        (id) => id.toString() !== storyId
-      );
+      user.bookmarks =
+        user.bookmarks.filter(
+          (id) =>
+            id.toString() !== storyId
+        );
     } else {
       user.bookmarks.push(storyId);
     }
@@ -85,6 +127,7 @@ const toggleBookmark = async (req, res) => {
       message: alreadyBookmarked
         ? "Bookmark removed"
         : "Bookmark added",
+
       bookmarks: user.bookmarks,
     });
   } catch (error) {
