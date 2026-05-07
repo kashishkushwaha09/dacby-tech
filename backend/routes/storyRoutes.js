@@ -8,9 +8,15 @@ const {
   getStories,
   getSingleStory,
   toggleBookmark,
+  getBookmarks
 } = require("../controllers/storyController");
 
 router.get("/", getStories);
+router.get(
+  "/bookmarks",
+  protect,
+  getBookmarks
+);
 
 router.get("/:id", getSingleStory);
 

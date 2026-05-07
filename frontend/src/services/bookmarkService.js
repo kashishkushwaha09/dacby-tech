@@ -1,15 +1,20 @@
 import API from "../api/axios";
 
-export const toggleBookmark = async (storyId) => {
+
+export const toggleBookmark = async (
+  storyId
+) => {
   const response = await API.post(
-    `/bookmarks/${storyId}`
+    `/stories/${storyId}/bookmark`
   );
 
   return response.data;
 };
 
 export const getBookmarks = async () => {
-  const response = await API.get("/bookmarks");
+  const response = await API.get(
+    "/stories/bookmarks"
+  );
 
   return response.data;
 };

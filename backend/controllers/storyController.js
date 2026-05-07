@@ -27,7 +27,24 @@ const getStories = async (req, res) => {
     });
   }
 };
+ const getBookmarks = async (
+  req,
+  res
+) => {
+  try {
+    const user = await User.findById(
+      req.user.id
+    ).populate("bookmarks");
 
+    res.status(200).json({
+      bookmarks: user.bookmarks,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
 const getSingleStory = async (req, res) => {
   try {
     const story = await Story.findById(req.params.id);
@@ -79,6 +96,7 @@ const toggleBookmark = async (req, res) => {
 
 module.exports = {
   getStories,
+  getBookmarks,
   getSingleStory,
   toggleBookmark,
 };
