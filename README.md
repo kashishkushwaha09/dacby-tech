@@ -1,4 +1,4 @@
-# Combined Project README.md
+# MERN Stack Mini Project README.md
 
 ````md
 # Hacker News Scraper MERN Application
