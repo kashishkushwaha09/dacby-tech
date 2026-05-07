@@ -1,7 +1,7 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 
-const Story = require("../models/Story");
+const Story = require("../models/storyModel");
 
 const scrapeStories = async () => {
   try {
