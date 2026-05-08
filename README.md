@@ -8,7 +8,7 @@ A full-stack MERN application that scrapes top stories from Hacker News and allo
 
 ### Frontend
 
-[https://your-frontend.vercel.app](https://dacby-tech.vercel.app/login)
+[https://dacby-tech.vercel.app](https://dacby-tech.vercel.app)
 
 ### Backend API
 
